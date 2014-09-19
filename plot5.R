@@ -4,7 +4,7 @@ NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
 onRoadSummary <- 
   NEI %>% 
-    filter(fips == 24510 & type == 'ON-ROAD') %>% 
+    filter(fips == "24510" & type == 'ON-ROAD') %>% 
       group_by(year) %>% 
         summarize(emissions = sum(Emissions, na.rm=TRUE))
 
