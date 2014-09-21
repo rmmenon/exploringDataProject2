@@ -3,6 +3,7 @@ library(dplyr)
 
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
+# Assume that the word Coal in EI.Sector (ignoring case) signifies "coal related emissions"
 coalsScc <- filter(SCC, grepl("Coal", EI.Sector, ignore.case=TRUE));
 NEI_yearly <- inner_join(NEI, coalsScc, by=c("SCC")) %>% group_by(year) %>% summarise(emissions=sum(Emissions, na.rm= TRUE))
 

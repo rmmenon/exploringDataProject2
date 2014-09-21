@@ -2,6 +2,8 @@ library(ggplot2)
 library(dplyr)
 NEI <- readRDS("summarySCC_PM25.rds")
 SCC <- readRDS("Source_Classification_Code.rds")
+
+# Assume that type="ON-ROAD" signifies all motor vehicles related records.
 onRoadSummary <- 
   NEI %>% 
     filter((fips == "24510"| fips == "06037") & type == 'ON-ROAD') %>% 
